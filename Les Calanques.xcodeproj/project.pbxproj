@@ -14,6 +14,7 @@
 		4303C08C21E0F3C800161CC2 /* TableViewIntegreeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4303C08B21E0F3C800161CC2 /* TableViewIntegreeController.swift */; };
 		4303C08E21E0FEB100161CC2 /* CalanqueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4303C08D21E0FEB100161CC2 /* CalanqueCell.swift */; };
 		4303C09021E1052E00161CC2 /* ImageRonde.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4303C08F21E1052E00161CC2 /* ImageRonde.swift */; };
+		4303C09221E128E800161CC2 /* CalanqueCellAlternative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4303C09121E128E800161CC2 /* CalanqueCellAlternative.swift */; };
 		43771A7921DFD2B700919FBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43771A7821DFD2B700919FBA /* AppDelegate.swift */; };
 		43771A8021DFD2B700919FBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43771A7E21DFD2B700919FBA /* Main.storyboard */; };
 		43771A8221DFD2B900919FBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43771A8121DFD2B900919FBA /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		4303C08B21E0F3C800161CC2 /* TableViewIntegreeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewIntegreeController.swift; sourceTree = "<group>"; };
 		4303C08D21E0FEB100161CC2 /* CalanqueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalanqueCell.swift; sourceTree = "<group>"; };
 		4303C08F21E1052E00161CC2 /* ImageRonde.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRonde.swift; sourceTree = "<group>"; };
+		4303C09121E128E800161CC2 /* CalanqueCellAlternative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalanqueCellAlternative.swift; sourceTree = "<group>"; };
 		43771A7521DFD2B700919FBA /* Les Calanques.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Les Calanques.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43771A7821DFD2B700919FBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43771A7F21DFD2B700919FBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			children = (
 				4303C08D21E0FEB100161CC2 /* CalanqueCell.swift */,
 				4303C08F21E1052E00161CC2 /* ImageRonde.swift */,
+				4303C09121E128E800161CC2 /* CalanqueCellAlternative.swift */,
 			);
 			path = Vue;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				4303C08E21E0FEB100161CC2 /* CalanqueCell.swift in Sources */,
 				4303C08621E0EF5900161CC2 /* CalanqueCollection.swift in Sources */,
 				4303C08A21E0F39F00161CC2 /* ControllerAvecCarte.swift in Sources */,
+				4303C09221E128E800161CC2 /* CalanqueCellAlternative.swift in Sources */,
 				4303C08821E0F38C00161CC2 /* ControllerAvecTableView.swift in Sources */,
 				4303C09021E1052E00161CC2 /* ImageRonde.swift in Sources */,
 				4303C08421E0EC5F00161CC2 /* Calanques.swift in Sources */,
