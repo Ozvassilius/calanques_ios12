@@ -11,11 +11,19 @@ import UIKit
 class TableViewIntegreeController: UITableViewController {
     
     var Calanques : [Calanque] = []
+    var cellID = "CalanqueCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         Calanques = CalanqueCollection().all()
+       // tableView.backgroundColor = UIColor.clear
+        let bg = UIImageView(frame: view.bounds)
+        bg.image = Calanques[0].image
+        bg.contentMode = .scaleAspectFill
+        tableView.backgroundView = bg
+        
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
 
     // MARK: - Table view data source
@@ -32,14 +40,21 @@ class TableViewIntegreeController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
 
-        // Configure the cell...
+        if let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? CalanqueCell {
+            cell.setupCell(calanque: Calanques[indexPath.row])
+            
+            return cell
+        } else {
+         // Configure the cell... (cell par defaut)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         let calanque = Calanques[indexPath.row]
         cell.textLabel?.text = calanque.nom
         cell.imageView?.image = calanque.image
 
         return cell
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
