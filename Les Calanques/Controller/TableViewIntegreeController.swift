@@ -8,18 +8,20 @@
 
 import UIKit
 
+let segueID = "Detail"
+
 class TableViewIntegreeController: UITableViewController {
     
-    var Calanques : [Calanque] = []
+    var calanques: [Calanque] = []
     var cellID = "CalanqueCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Calanques = CalanqueCollection().all()
+        calanques = CalanqueCollection().all()
        // tableView.backgroundColor = UIColor.clear
         let bg = UIImageView(frame: view.bounds)
-        bg.image = Calanques[0].image
+        bg.image = calanques[0].image
         bg.contentMode = .scaleAspectFill
         tableView.backgroundView = bg
         
@@ -35,7 +37,7 @@ class TableViewIntegreeController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Calanques.count
+        return calanques.count
     }
 
     
@@ -43,13 +45,13 @@ class TableViewIntegreeController: UITableViewController {
         
 
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? CalanqueCell {
-            cell.setupCell(calanque: Calanques[indexPath.row])
+            cell.setupCell(calanque: calanques[indexPath.row])
             
             return cell
         } else {
          // Configure the cell... (cell par defaut)
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        let calanque = Calanques[indexPath.row]
+        let calanque = calanques[indexPath.row]
         cell.textLabel?.text = calanque.nom
         cell.imageView?.image = calanque.image
 
@@ -61,49 +63,39 @@ class TableViewIntegreeController: UITableViewController {
         return 150
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: segueID, sender: calanques[indexPath.row])
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == segueID {
+            if let vc = segue.destination as? DetailController {
+                vc.calanqueRecue = sender as? Calanque
+            }
+        }
     }
-    */
+    
+    
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            calanques.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    
+    @IBAction func reloadAction(_ sender: Any) {
+        calanques = CalanqueCollection().all()
+        tableView.reloadData()
+    }
+    
+    
+  
+
 
 }
