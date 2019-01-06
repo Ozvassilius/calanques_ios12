@@ -58,6 +58,19 @@ class ControllerAvecCarte: UIViewController, MKMapViewDelegate {
         // et on applique une fonction en consequence
         NotificationCenter.default.addObserver(self, selector:#selector(notifDetail), name: Notification.Name("DetailNotifName"), object:nil)
         
+        // reglages de la hauteut (delta) de la map
+        // voir fonction setupMap
+        if calanques.count > 5 {
+            let premiere = calanques[5].coordonnee
+            setupMap(coordonnees: premiere)
+        }
+        
+    }
+    
+    func setupMap(coordonnees: CLLocationCoordinate2D) {
+        let span = MKCoordinateSpan(latitudeDelta: 0.35, longitudeDelta: 0.35)
+        let region = MKCoordinateRegion(center: coordonnees, span: span)
+        mapView.setRegion(region, animated: true)
     }
     
     // notif: etape 3 on applique la fonction voulue
