@@ -11,10 +11,26 @@ import MapKit
 
 class ControllerAvecCarte: UIViewController, MKMapViewDelegate {
     
-    
+    // Outlets
     @IBOutlet weak var mapView: MKMapView!
     
+    // var
     var calanques : [Calanque] = CalanqueCollection().all()
+    
+    // pour passer au detail
+    //////////////////////////
+    func toDetail(calanque: Calanque) {
+        performSegue(withIdentifier: "Detail", sender: calanque)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Detail" {
+            if let controller = segue.destination as? DetailController {
+                controller.calanqueRecue = sender as? Calanque
+            }
+        }
+    }
+    /////////////////////////
     
     func addAnnotations() {
         for calanque in calanques {
@@ -71,7 +87,10 @@ class ControllerAvecCarte: UIViewController, MKMapViewDelegate {
             
             if annotationView == nil { // si l'annotation n'est pas encore crée
                 
-                annotationView = MonAnnotationView(annotation: anno, reuseIdentifier: reuseIdentifier)
+                annotationView = MonAnnotationView(controller: self, annotation: anno, reuseIdentifier: reuseIdentifier)
+                
+              // methode avec l'ancien init (sans le controller qui permet de faire le segue
+              //  annotationView = MonAnnotationView(annotation: anno, reuseIdentifier: reuseIdentifier)
                 
                 // Methode de base
 //                annotationView = MKAnnotationView(annotation: anno, reuseIdentifier: reuseIdentifier)

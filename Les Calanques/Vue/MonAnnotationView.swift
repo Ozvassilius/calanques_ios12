@@ -10,6 +10,15 @@ import UIKit
 import MapKit
 
 class MonAnnotationView: MKAnnotationView {
+    
+    var controller : ControllerAvecCarte?
+    
+    // va nous permettre d'utiliser les segues
+    init(controller: ControllerAvecCarte,annotation: MKAnnotation?, reuseIdentifier: String?) {
+        self.controller = controller
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        setupAnnotation()
+    }
 
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
@@ -22,7 +31,6 @@ class MonAnnotationView: MKAnnotationView {
     }
     
     func setupAnnotation() {
-        
         image = UIImage(named: "placeholder")
         canShowCallout = true
         leftCalloutAccessoryView = setupLeft()
@@ -42,6 +50,8 @@ class MonAnnotationView: MKAnnotationView {
     }
     
     @objc func detail() {
+        guard let anno = annotation as? MonAnnotation else {return}
+        controller?.toDetail(calanque: anno.calanque)
         
     }
     
@@ -54,7 +64,7 @@ class MonAnnotationView: MKAnnotationView {
     
     func setupCenter() -> UIView? {
         
-        guard let anno = annotation as? MonAnnotation  else { return nil }
+        guard let anno = annotation as? MonAnnotation  else { return nil}
         
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 125, height: 125))
         
