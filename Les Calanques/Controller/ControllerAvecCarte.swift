@@ -9,13 +9,18 @@
 import UIKit
 import MapKit
 
-class ControllerAvecCarte: UIViewController, MKMapViewDelegate {
+class ControllerAvecCarte: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     // Outlets
     @IBOutlet weak var mapView: MKMapView!
     
     // var
     var calanques : [Calanque] = CalanqueCollection().all()
+    
+    // ma pos
+    var locationManager  = CLLocationManager()
+    var userPosition: CLLocation?
+    
     
     // pour passer au detail
     //////////////////////////
@@ -52,6 +57,11 @@ class ControllerAvecCarte: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         
         mapView.delegate = self
+        locationManager.delegate = self
+        mapView.showsUserLocation = true
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        
         addAnnotations()
         
         // notif: etape 2 on observe dans le viewDidLoad les notifs qui tournent
@@ -93,6 +103,18 @@ class ControllerAvecCarte: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func getPosition(_ sender: Any) {
+        if userPosition != nil {
+            setupMap(coordonnees: userPosition!.coordinate)
+        }
+    }
+    
+    // Delegate de CLLocationManager
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if locations.count > 0 {
+            if let maPosition = locations.last {
+                userPosition = maPosition
+            }
+        }
     }
    
     
