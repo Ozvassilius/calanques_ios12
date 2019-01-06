@@ -218,7 +218,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="WeV-AC-A3A">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" id="Bxr-Cb-sHn">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" id="Bxr-Cb-sHn">
+                            <rect key="frame" x="90.5" y="7.5" width="194" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Standart"/>
@@ -310,10 +311,10 @@
                             <constraint firstItem="nk4-8B-u1y" firstAttribute="top" secondItem="Rsz-Qj-llC" secondAttribute="bottom" constant="20" id="AgC-ee-ewc"/>
                             <constraint firstItem="Rsz-Qj-llC" firstAttribute="leading" secondItem="PYK-br-faB" secondAttribute="leading" id="B6N-S3-WdI"/>
                             <constraint firstItem="d0A-yV-kv0" firstAttribute="top" secondItem="kDa-p0-RsY" secondAttribute="top" id="Ej0-Zt-ckR"/>
-                            <constraint firstItem="PYK-br-faB" firstAttribute="bottom" secondItem="ekN-Iq-fAq" secondAttribute="bottom" id="HKd-H9-yrP"/>
+                            <constraint firstAttribute="bottom" secondItem="ekN-Iq-fAq" secondAttribute="bottom" id="HKd-H9-yrP"/>
                             <constraint firstItem="ekN-Iq-fAq" firstAttribute="top" secondItem="kDa-p0-RsY" secondAttribute="top" id="PBB-gf-rbC"/>
                             <constraint firstItem="PYK-br-faB" firstAttribute="bottom" secondItem="nk4-8B-u1y" secondAttribute="bottom" constant="8" id="R6O-dw-ZHY"/>
-                            <constraint firstItem="d0A-yV-kv0" firstAttribute="bottom" secondItem="PYK-br-faB" secondAttribute="bottom" id="WZT-8q-OT4"/>
+                            <constraint firstItem="d0A-yV-kv0" firstAttribute="bottom" secondItem="kDa-p0-RsY" secondAttribute="bottom" id="WZT-8q-OT4"/>
                             <constraint firstItem="4xf-JL-406" firstAttribute="centerX" secondItem="kDa-p0-RsY" secondAttribute="centerX" id="bZb-s9-jEX"/>
                             <constraint firstItem="PYK-br-faB" firstAttribute="trailing" secondItem="nk4-8B-u1y" secondAttribute="trailing" constant="8" id="fer-kM-HTM"/>
                             <constraint firstItem="Rsz-Qj-llC" firstAttribute="top" secondItem="4xf-JL-406" secondAttribute="bottom" constant="20" id="gWL-vj-5Fz"/>
