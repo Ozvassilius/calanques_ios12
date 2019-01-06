@@ -51,7 +51,12 @@ class MonAnnotationView: MKAnnotationView {
     
     @objc func detail() {
         guard let anno = annotation as? MonAnnotation else {return}
-        controller?.toDetail(calanque: anno.calanque)
+        
+        // controller?.toDetail(calanque: anno.calanque)
+        
+        // notif: etape 1 : je poste une notif avec un nom et un objet
+        // etape suivant dans ControllerAvecCarte viewDidLoad()
+        NotificationCenter.default.post(name: Notification.Name("DetailNotifName"), object: anno.calanque)
         
     }
     

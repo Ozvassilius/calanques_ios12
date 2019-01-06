@@ -54,6 +54,19 @@ class ControllerAvecCarte: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         addAnnotations()
         
+        // notif: etape 2 on observe dans le viewDidLoad les notifs qui tournent
+        // et on applique une fonction en consequence
+        NotificationCenter.default.addObserver(self, selector:#selector(notifDetail), name: Notification.Name("DetailNotifName"), object:nil)
+        
+    }
+    
+    // notif: etape 3 on applique la fonction voulue
+    @objc func notifDetail(notification: Notification) {
+    if let calanque = notification.object as? Calanque {
+    print("J'ai une calanque")
+    toDetail(calanque: calanque)
+    }
+    
     }
     
     @IBAction func segmentedChange(_ sender: UISegmentedControl) {
