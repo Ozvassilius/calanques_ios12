@@ -45,7 +45,14 @@ class MonAnnotationView: MKAnnotationView {
         return button
     }
     
+    // fonction pour ouvrir map et donner le trajet de la position utilisateur vers le calanque selectionnee
     @objc func gps (){
+        guard let anno = annotation as? MonAnnotation else {return}
+        let placemark = MKPlacemark(coordinate:  anno.coordinate)
+        let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
+        let map = MKMapItem(placemark: placemark)
+        map.openInMaps(launchOptions: options)
+        
         
     }
     
